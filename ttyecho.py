@@ -1,3 +1,7 @@
+# USAGE:
+# sudo python2 ttyecho.py
+# sudo python3 ttyecho.py
+
 import os
 import termios
 from fcntl import ioctl
@@ -10,6 +14,6 @@ fd = os.open(DEV_PTS, os.O_RDWR)
 
 for cmd in CMD_LIST:
     for c in cmd:
-        fcntl.ioctl(fd, termios.TIOCSTI, c)
+        ioctl(fd, termios.TIOCSTI, c)
 
 os.close(fd)
